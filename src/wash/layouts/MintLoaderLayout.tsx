@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { titanOne } from 'src/wash/common/WithFonts';
 import styled from '@emotion/styled';
-
-import type { ReactElement } from 'react';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
+import Image from 'next/image';
+import type { ReactElement } from 'react';
+import { useState } from 'react';
+import { titanOne } from '../common/fonts';
 
 /**************************************************************************************************
  * Defining the styled components style for the RiveFallbackWrapper component
