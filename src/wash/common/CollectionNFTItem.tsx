@@ -2,15 +2,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { DEFAULT_NFT_COLOR } from '../utils/constants';
-import { colors } from '../utils/theme';
-
-import { WashProgress } from './WashProgress';
-
 import type { ReactElement, ReactNode } from 'react';
 import type { TNFTItem } from '../types/types';
+import { DEFAULT_NFT_COLOR } from '../utils/constants';
 import { getPepeImage } from '../utils/getPepeImage';
+import { colors } from '../utils/theme';
 import { titanOne } from './fonts';
+import { WashProgress } from './WashProgress';
 
 type TNftItemProps = {
   label?: string;
@@ -148,9 +146,7 @@ export function CollectionNFTItem({ nft }: TNftItemProps): ReactElement {
     }
     return (
       <NFTImage
-        src={
-          `/wash/${getPepeImage(0, DEFAULT_NFT_COLOR)}` //(nft?.progress || 0, nft?.color ?? DEFAULT_NFT_COLOR
-        }
+        src={`/wash/${getPepeImage(nft?.progress || 0, nft?.color ?? DEFAULT_NFT_COLOR)}`}
         alt={'nft-image'}
         borderColor={nft?.isRare ? colors.orange[800] : colors.violet[700]}
         width={320}
