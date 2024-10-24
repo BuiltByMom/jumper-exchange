@@ -235,7 +235,7 @@ export function Widget({
       className="widget-wrapper"
       welcomeScreenClosed={welcomeScreenClosed || !enabled}
     >
-      <WashProgressAlert />
+      {welcomeScreenClosed && <WashProgressAlert />}
       {isMultisigSigner && <MultisigWalletHeaderAlert />}
       <ClientOnly fallback={<LifiWidgetSkeleton config={config} />}>
         <LiFiWidget
