@@ -1,6 +1,6 @@
 'use client';
 
-import type { TypographyProps } from '@mui/material';
+import type { Breakpoint, TypographyProps } from '@mui/material';
 import { Box, Button, Typography } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import type { ImageProps } from 'next/image';
@@ -18,9 +18,12 @@ export const WashProgressAlertContainer = styled(Box)(({ theme }) => ({
   boxShadow: `0px 8px 16px ${alpha(theme.palette.common.black, 0.04)}`,
   borderRadius: '12px',
   border: `2px solid ${colors.violet[800]}`,
-  maxWidth: 416,
   marginBottom: theme.spacing(1),
   display: 'block !important',
+
+  [theme.breakpoints.up('sm' as Breakpoint)]: {
+    maxWidth: 416,
+  },
 }));
 
 export const WashProgressAlertTitle = styled(Typography)(({ theme }) => ({
@@ -39,6 +42,9 @@ export const WashProgressAlertContent = styled(Box)(({ theme }) => ({
   fontSize: '12px',
   lineHeight: '16px',
   maxWidth: 224,
+  [theme.breakpoints.down('sm' as Breakpoint)]: {
+    marginRight: 180,
+  },
 }));
 
 export const WashProgressAlertButton = styled(Button)(({ theme }) => ({
@@ -60,6 +66,7 @@ export const WashProgressImageWrapper = styled(Box)(({ theme }) => ({
   top: theme.spacing(3),
   width: 128,
   height: 128,
+
   ':before, :after': {
     content: '""',
     position: 'absolute',
@@ -68,15 +75,26 @@ export const WashProgressImageWrapper = styled(Box)(({ theme }) => ({
     backgroundImage: 'url("/wash/foam.png")',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100% 100%',
+    bottom: 14,
+    right: -16,
   },
   ':before': {
-    left: -66,
-    bottom: 9,
-    transform: 'rotate(9.27deg)',
+    transform: 'scaleY(-1) translateY(-100%)',
   },
   ':after': {
     bottom: 14,
     right: -16,
+  },
+  [theme.breakpoints.up('sm' as Breakpoint)]: {
+    ':before': {
+      left: -66,
+      bottom: 9,
+      transform: 'rotate(9.27deg)',
+    },
+    ':after': {
+      bottom: 14,
+      right: -16,
+    },
   },
 }));
 
