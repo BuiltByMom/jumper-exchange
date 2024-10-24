@@ -24,6 +24,9 @@ export async function getActiveTheme(
   if (segments.includes('superfest')) {
     segments.push('op');
   }
+  if (segments.includes('wash')) {
+    segments.push('dark');
+  }
 
   const partnerThemeUids = new Set(
     partnerThemes.data.map((d) => d.attributes.uid),
