@@ -2,15 +2,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { DEFAULT_NFT_COLOR } from '../utils/constants';
-import { colors } from '../utils/theme';
-import { getPepeImage } from '../utils/utils';
-
-import { WashProgress } from './WashProgress';
-
 import type { ReactElement, ReactNode } from 'react';
-import { titanOne } from 'src/wash/common/WithFonts';
 import type { TNFTItem } from '../types/types';
+import { DEFAULT_NFT_COLOR } from '../utils/constants';
+import { getPepeImage } from '../utils/getPepeImage';
+import { colors } from '../utils/theme';
+import { titanOne } from './fonts';
+import { WashProgress } from './WashProgress';
 
 type TNftItemProps = {
   label?: string;
