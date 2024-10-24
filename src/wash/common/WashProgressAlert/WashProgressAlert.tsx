@@ -8,9 +8,10 @@ import {
   WashProgressImageWrapper,
   WashProgressInfo,
 } from '.';
+import { useGetNFT } from 'src/wash/hooks/useGetNFT';
 
 export const WashProgressAlert = () => {
-  const imgSrc = getPepeImage(0, 'pink');
+  const data = useGetNFT();
 
   return (
     <WashProgressAlertContainer className="alert">
@@ -18,13 +19,15 @@ export const WashProgressAlert = () => {
       <WashProgressAlertContent marginTop={1.5}>
         Trade on Jumper to wash your NFT and win prizes.
       </WashProgressAlertContent>
-      <WashProgressAlertButton>Keep washing</WashProgressAlertButton>
+      <WashProgressAlertButton>
+        {data.hasNFT ? 'Keep washing' : 'Start washing'}
+      </WashProgressAlertButton>
       <WashProgressImageWrapper>
-        <WashProgressInfo>0%</WashProgressInfo>
+        <WashProgressInfo>{`${data.nft?.progress || 0}%`}</WashProgressInfo>
         <WashProgressAlertImage
-          src={`/wash/${imgSrc}`} //nft?.progress || 0, nft?.color ?? DEFAULT_NFT_COLOR
+          src={`/wash/${getPepeImage(data.nft?.progress || 0, data.nft?.color ?? 'pink')}`}
           alt={'nft-image'}
-          isRare={true} //nft?.isRare
+          isRare={false}
           width={128}
           height={128}
         />
