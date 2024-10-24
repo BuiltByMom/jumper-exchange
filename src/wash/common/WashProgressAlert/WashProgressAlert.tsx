@@ -29,7 +29,6 @@ export const WashProgressAlert = () => {
         <WashProgressAlertImage
           src={`/wash/${getPepeImage(data.nft?.progress || 0, data.nft?.color ?? 'pink')}`}
           alt={'nft-image'}
-          isRare={false}
           width={128}
           height={128}
         />

@@ -84,28 +84,12 @@ export const WashProgressImageWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const WashProgressAlertImage = styled(Image, {
-  shouldForwardProp: (prop) => prop !== 'isRare',
-})<WashProgressAlertImageProps>(({ theme, isRare }) => ({
-  borderColor: isRare ? colors.orange[800] : colors.violet[700],
+export const WashProgressAlertImage = styled(
+  Image,
+)<WashProgressAlertImageProps>(() => ({
+  borderColor: colors.violet[700],
   borderWidth: '3px',
   borderRadius: '8px',
-  // ':before': {
-  //   content: '""',
-  //   position: 'absolute',
-  //   width: '100%',
-  //   height: '100%',
-  //   backgroundImage: 'url("/wash/foam.png")',
-  // },
-  // ':after': {
-  //   content: 'url("/wash/foam.png")',
-  //   position: 'absolute',
-  //   width: '128px',
-  //   height: '42px',
-  //   right: 0,
-  //   bottom: 0,
-  //   backgroundColor: 'red',
-  // },
 }));
 
 export const WashProgressFoam = styled('span', {
