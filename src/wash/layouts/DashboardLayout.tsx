@@ -14,6 +14,8 @@ import type { ReactElement } from 'react';
 import type { TCleaningItem } from '../types/wash';
 import { colors, WashH1 } from '../utils/theme';
 import { inter } from 'src/fonts/fonts';
+import { mq } from '../utils/constants';
+import { SwapWarningWrapper } from '../common/SwapWarning';
 /************************************************************************************************
  * OverkillModal: A modal component to warn users about potential overkill when using an item
  *
@@ -104,6 +106,16 @@ const SwapSection = styled.div`
   border-radius: 32px;
 `;
 
+const WarngingSwapWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  ${mq[0]} {
+    gap: 1rem;
+  }
+`;
+
 /************************************************************************************************
  * DashboardLayout: Main component for the washing dashboard
  *
@@ -165,9 +177,12 @@ export function DashboardLayout(): ReactElement {
           />
           <QuestsList isSkeleton={!hasNFT} />
         </WashSection>
-        <SwapSection>
-          <LiFiWidget integrator={'Mom'} config={widgetConfig} />
-        </SwapSection>
+        <WarngingSwapWrapper>
+          <SwapSection>
+            <LiFiWidget integrator={'Mom'} config={widgetConfig} />
+          </SwapSection>
+          <SwapWarningWrapper />
+        </WarngingSwapWrapper>
       </DashboardLayoutContainer>
     </Fragment>
   );
