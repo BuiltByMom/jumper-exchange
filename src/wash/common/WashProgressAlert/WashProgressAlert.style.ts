@@ -54,10 +54,6 @@ export const WashProgressAlertButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-interface WashProgressAlertImageProps extends ImageProps {
-  isRare?: boolean;
-}
-
 export const WashProgressImageWrapper = styled(Box)(({ theme }) => ({
   position: 'absolute',
   right: theme.spacing(3),
@@ -84,10 +80,14 @@ export const WashProgressImageWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
+interface WashProgressAlertImageProps extends ImageProps {
+  border?: string;
+}
+
 export const WashProgressAlertImage = styled(
   Image,
-)<WashProgressAlertImageProps>(() => ({
-  borderColor: colors.violet[700],
+)<WashProgressAlertImageProps>(({ border }) => ({
+  borderColor: border || colors.violet[700],
   borderWidth: '3px',
   borderRadius: '8px',
 }));
