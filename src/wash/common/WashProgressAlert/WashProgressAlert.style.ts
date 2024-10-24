@@ -1,5 +1,6 @@
 'use client';
 
+import type { TypographyProps } from '@mui/material';
 import { Box, Button, Typography } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import type { ImageProps } from 'next/image';
@@ -129,21 +130,39 @@ export const WashProgressFoam = styled('span', {
   // },
 }));
 
-export const WashProgressInfo = styled(Typography)(({ theme }) => ({
-  // color: theme.palette.info.main,
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: '12px',
-  lineHeight: '16px',
-  fontWeight: 700,
-  justifyContent: 'center',
-  backgroundColor: colors.violet[400],
-  border: `2px solid ${colors.pink[800]}`,
-  borderRadius: '8px',
-  width: 80,
-  height: 25,
-  position: 'absolute',
-  top: 0,
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-}));
+interface WashProgressInfoProps extends TypographyProps {
+  progress: number;
+}
+
+export const WashProgressInfo = styled(Typography)<WashProgressInfoProps>(
+  ({ progress }) => ({
+    // color: theme.palette.info.main,
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '12px',
+    lineHeight: '16px',
+    fontWeight: 700,
+    justifyContent: 'center',
+    backgroundColor: colors.violet[400],
+    border: `2px solid ${colors.pink[800]}`,
+    borderRadius: '8px',
+    overflow: 'hidden',
+    width: 80,
+    height: 25,
+    position: 'absolute',
+    top: 0,
+    left: '50%',
+    transform: 'translate(-50%, -50%) skewX(-6deg)',
+
+    ':after': {
+      content: "' '",
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      zIndex: -1,
+      width: progress > 0 ? `calc(${progress}% + 1px)` : 0,
+      backgroundImage: `linear-gradient(to right, ${colors.pink[600]}, ${colors.pink[800]})`,
+    },
+  }),
+);
