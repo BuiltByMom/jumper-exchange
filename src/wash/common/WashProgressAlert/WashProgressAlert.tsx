@@ -1,3 +1,4 @@
+import { useGetNFT } from 'src/wash/hooks/useGetNFT';
 import { getPepeImage } from 'src/wash/utils/getPepeImage';
 import {
   WashProgressAlertButton,
@@ -8,7 +9,6 @@ import {
   WashProgressImageWrapper,
   WashProgressInfo,
 } from '.';
-import { useGetNFT } from 'src/wash/hooks/useGetNFT';
 
 export const WashProgressAlert = () => {
   const data = useGetNFT();
@@ -23,7 +23,9 @@ export const WashProgressAlert = () => {
         {data.hasNFT ? 'Keep washing' : 'Start washing'}
       </WashProgressAlertButton>
       <WashProgressImageWrapper>
-        <WashProgressInfo>{`${data.nft?.progress || 0}%`}</WashProgressInfo>
+        <WashProgressInfo
+          progress={data.nft?.progress || 0}
+        >{`${data.nft?.progress || 0}%`}</WashProgressInfo>
         <WashProgressAlertImage
           src={`/wash/${getPepeImage(data.nft?.progress || 0, data.nft?.color ?? 'pink')}`}
           alt={'nft-image'}
